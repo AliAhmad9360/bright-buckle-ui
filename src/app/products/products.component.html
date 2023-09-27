@@ -1,0 +1,14 @@
+<app-header [activeLink]="'products'"></app-header>
+<ag-grid-angular
+    style="width: 100%; height: 100%"
+    class="ag-theme-alpine"
+    [columnDefs]="columnDefs"
+    [defaultColDef]="defaultColDef"
+    [rowData]="rowData$"
+    [rowSelection]="'multiple'"
+    [animateRows]="true"
+    (gridReady)="onGridReady($event)"
+    (rowDoubleClicked)="rowDoubleClicked($event)"
+    [pagination]="true"
+    [paginationPageSize]="50"
+  ></ag-grid-angular>
