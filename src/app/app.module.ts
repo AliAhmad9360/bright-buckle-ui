@@ -1,4 +1,5 @@
 import { NgModule } from '@angular/core';
+import { FormsModule } from '@angular/forms';
 import { BrowserModule } from '@angular/platform-browser';
 
 import { AppRoutingModule } from './app-routing.module';
@@ -9,6 +10,7 @@ import { HomeComponent } from './home/home.component';
 import { AgGridModule } from 'ag-grid-angular';
 import { HeaderComponent } from './header/header.component';
 import { ProductsComponent } from './products/products.component';
+import { AddproductComponent } from './addproduct/addproduct.component';
 
 @NgModule({
   declarations: [
@@ -17,12 +19,14 @@ import { ProductsComponent } from './products/products.component';
     RegisterComponent,
     HomeComponent,
     HeaderComponent,
-    ProductsComponent
+    ProductsComponent,
+    AddproductComponent
   ],
   imports: [
     BrowserModule,
     AppRoutingModule,
-    AgGridModule
+    AgGridModule,
+    FormsModule
   ],
   providers: [],
   bootstrap: [AppComponent]

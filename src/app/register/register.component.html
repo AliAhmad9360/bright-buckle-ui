@@ -1,34 +1,38 @@
-<app-header *ngIf="isUserEditing"></app-header>
+<app-header></app-header>
 <div class="flex  flex-col justify-center form">
     <form>
         <div class="space-y-12">
           <div class="border-b border-gray-900/10 pb-12">
             <h2 class="text-base font-semibold leading-7 text-gray-900">General Information</h2>
             <p class="mt-1 text-sm leading-6 text-gray-600">Please enter your general information.</p>
-      
+            <div *ngFor="let error of errors">
+                <div class="p-4 mb-4 text-sm text-red-800 rounded-lg bg-red-50 dark:bg-gray-800 dark:text-red-400" role="alert">
+                    <span class="font-medium">Error!</span> {{ error }}
+                </div>
+            </div>
             <div class="mt-10 grid grid-cols-1 gap-x-6 gap-y-8 sm:grid-cols-6">
                 <div class="sm:col-span-2 sm:col-start-1">
-                    <label for="city" class="block text-sm font-medium leading-6 text-gray-900">First Name</label>
+                    <label for="firstName" class="block text-sm font-medium leading-6 text-gray-900">First Name</label>
                     <div class="mt-2">
-                        <input type="text" name="city" id="city" autocomplete="address-level2" class="pl-3 block w-full rounded-md border-0 py-1.5 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:text-sm sm:leading-6">
+                        <input [(ngModel)]="user.firstName" type="text" name="firstName" id="firstName" autocomplete="address-level2" class="pl-3 block w-full rounded-md border-0 py-1.5 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:text-sm sm:leading-6">
                     </div>
                 </div>
                 <div class="sm:col-span-2">
-                    <label for="region" class="block text-sm font-medium leading-6 text-gray-900">Middle Name</label>
+                    <label for="middleName" class="block text-sm font-medium leading-6 text-gray-900">Middle Name</label>
                     <div class="mt-2">
-                        <input type="text" name="region" id="region" autocomplete="address-level1" class="pl-3 block w-full rounded-md border-0 py-1.5 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:text-sm sm:leading-6">
+                        <input type="text" [(ngModel)]="user.middleName" name="middleName" id="middleName" autocomplete="address-level1" class="pl-3 block w-full rounded-md border-0 py-1.5 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:text-sm sm:leading-6">
                     </div>
                 </div>
                 <div class="sm:col-span-2">
-                    <label for="postal-code" class="block text-sm font-medium leading-6 text-gray-900">Last Name</label>
+                    <label for="lastName" class="block text-sm font-medium leading-6 text-gray-900">Last Name</label>
                     <div class="mt-2">
-                        <input type="text" name="postal-code" id="postal-code" autocomplete="postal-code" class="pl-3 block w-full rounded-md border-0 py-1.5 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:text-sm sm:leading-6">
+                        <input type="text" [(ngModel)]="user.lastName" name="lastName" id="lastName" autocomplete="postal-code" class="pl-3 block w-full rounded-md border-0 py-1.5 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:text-sm sm:leading-6">
                     </div>
                 </div>
                 <div class="sm:col-span-6">
-                    <label for="postal-code" class="block text-sm font-medium leading-6 text-gray-900">Date of Birth</label>
+                    <label for="dateOfBirth" class="block text-sm font-medium leading-6 text-gray-900">Date of Birth</label>
                     <div class="mt-2">
-                        <input type="date" name="postal-code" id="postal-code" autocomplete="postal-code" class="pl-3 pr-3 block w-full rounded-md border-0 py-1.5 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:text-sm sm:leading-6">
+                        <input type="date" [(ngModel)]="user.dateOfBirth" name="dateOfBirth" id="dateOfBirth" autocomplete="postal-code" class="pl-3 pr-3 block w-full rounded-md border-0 py-1.5 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:text-sm sm:leading-6">
                     </div>
                 </div>
             </div>
@@ -40,21 +44,21 @@
 
             <div class="mt-10 grid grid-cols-1 gap-x-6 gap-y-8 sm:grid-cols-6">
                 <div class="sm:col-span-2">
-                    <label for="postal-code" class="block text-sm font-medium leading-6 text-gray-900">Email</label>
+                    <label for="email" class="block text-sm font-medium leading-6 text-gray-900">Email</label>
                     <div class="mt-2">
-                        <input type="text" name="postal-code" id="postal-code" autocomplete="postal-code" class="pl-3 block w-full rounded-md border-0 py-1.5 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:text-sm sm:leading-6">
+                        <input type="text" [(ngModel)]="user.email" name="email" id="email" autocomplete="postal-code" class="pl-3 block w-full rounded-md border-0 py-1.5 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:text-sm sm:leading-6">
                     </div>
                 </div>
                 <div class="sm:col-span-2">
-                    <label for="postal-code" class="block text-sm font-medium leading-6 text-gray-900">Phone Number</label>
+                    <label for="phoneNumber" class="block text-sm font-medium leading-6 text-gray-900">Phone Number</label>
                     <div class="mt-2">
-                        <input type="text" name="postal-code" id="postal-code" autocomplete="postal-code" class="pl-3 block w-full rounded-md border-0 py-1.5 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:text-sm sm:leading-6">
+                        <input type="text" [(ngModel)]="user.phoneNumber" name="phoneNumber" id="phoneNumber" autocomplete="postal-code" class="pl-3 block w-full rounded-md border-0 py-1.5 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:text-sm sm:leading-6">
                     </div>
                 </div>
                 <div class="sm:col-span-2">
-                    <label for="postal-code" class="block text-sm font-medium leading-6 text-gray-900">ZIP Code</label>
+                    <label for="zipCode" class="block text-sm font-medium leading-6 text-gray-900">ZIP Code</label>
                     <div class="mt-2">
-                        <input type="text" name="postal-code" id="postal-code" autocomplete="postal-code" class="pl-3 block w-full rounded-md border-0 py-1.5 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:text-sm sm:leading-6">
+                        <input type="text" [(ngModel)]="user.zipCode" name="zipCode" id="zipCode" autocomplete="postal-code" class="pl-3 block w-full rounded-md border-0 py-1.5 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:text-sm sm:leading-6">
                     </div>
                 </div>
             </div>
@@ -64,21 +68,15 @@
             </div>
             <div class="mt-10 grid grid-cols-1 gap-x-6 gap-y-8 sm:grid-cols-6">
                 <div class="sm:col-span-2">
-                    <label for="postal-code" class="block text-sm font-medium leading-6 text-gray-900">Username</label>
+                    <label for="username" class="block text-sm font-medium leading-6 text-gray-900">Username</label>
                     <div class="mt-2">
-                        <input [disabled]="isUserEditing" type="text" name="postal-code" id="postal-code" autocomplete="postal-code" class="pl-3 block w-full rounded-md border-0 py-1.5 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:text-sm sm:leading-6">
+                        <input type="text" [(ngModel)]="user.username" name="username" id="username" autocomplete="postal-code" class="pl-3 block w-full rounded-md border-0 py-1.5 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:text-sm sm:leading-6">
                     </div>
                 </div>
-                <div class="sm:col-span-2" *ngIf="!isUserEditing">
-                    <label for="postal-code" class="block text-sm font-medium leading-6 text-gray-900">Password</label>
+                <div class="sm:col-span-2" >
+                    <label for="password" class="block text-sm font-medium leading-6 text-gray-900">Password</label>
                     <div class="mt-2">
-                        <input type="password" name="postal-code" id="postal-code" autocomplete="postal-code" class="pl-3 block w-full rounded-md border-0 py-1.5 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:text-sm sm:leading-6">
-                    </div>
-                </div>
-                <div class="sm:col-span-2" *ngIf="!isUserEditing">
-                    <label for="postal-code" class="block text-sm font-medium leading-6 text-gray-900">Confirm Password</label>
-                    <div class="mt-2">
-                        <input type="password" name="postal-code" id="postal-code" autocomplete="postal-code" class="pl-3 block w-full rounded-md border-0 py-1.5 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:text-sm sm:leading-6">
+                        <input [disabled]="!!userId" [(ngModel)]="user.password" type="password" name="password" id="password" autocomplete="postal-code" class="pl-3 block w-full rounded-md border-0 py-1.5 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:text-sm sm:leading-6">
                     </div>
                 </div>
             </div>
@@ -86,9 +84,8 @@
         </div>
       
         <div class="mt-6 flex items-center justify-end gap-x-6">
-          <a type="button" class="text-sm font-semibold leading-6 text-gray-900" routerLink="{{ isUserEditing ? '/users' : '/login' }}">Cancel</a>
-          <button *ngIf="!isUserEditing" type="button" class="rounded-md bg-indigo-600 px-3 py-2 text-sm font-semibold text-white shadow-sm hover:bg-indigo-500 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-indigo-600" (click)="register()">Register</button>
-          <button *ngIf="isUserEditing" type="button" class="rounded-md bg-indigo-600 px-3 py-2 text-sm font-semibold text-white shadow-sm hover:bg-indigo-500 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-indigo-600" (click)="saveUser()">Save</button>
+          <a class="text-sm font-semibold leading-6 text-gray-900" routerLink="/users">Cancel</a>
+          <button type="button" class="rounded-md bg-indigo-600 px-3 py-2 text-sm font-semibold text-white shadow-sm hover:bg-indigo-500 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-indigo-600" (click)="saveUser()">Save</button>
         </div>
       </form>
 </div>

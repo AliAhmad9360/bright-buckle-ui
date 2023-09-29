@@ -4,11 +4,11 @@
     class="ag-theme-alpine"
     [columnDefs]="columnDefs"
     [defaultColDef]="defaultColDef"
-    [rowData]="rowData$"
+    [getContextMenuItems]="getContextMenuItems"
+    [rowData]="rowData"
     [rowSelection]="'multiple'"
     [animateRows]="true"
     (gridReady)="onGridReady($event)"
-    (rowDoubleClicked)="rowDoubleClicked($event)"
     [pagination]="true"
     [paginationPageSize]="50"
   ></ag-grid-angular>
